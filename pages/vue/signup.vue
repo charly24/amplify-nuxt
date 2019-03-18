@@ -27,7 +27,7 @@
           <input type="button" class="button is-primary" value="SignUp" @click="signUp" />
           <ul>
             <li>
-              <nuxt-link to="/">Top</nuxt-link>
+              <nuxt-link to="/vue/">Top</nuxt-link>
             </li>
           </ul>
         </div>
@@ -58,7 +58,7 @@ export default {
       })
         .then(data => {
           this.$store.dispatch('amplify/setUsername', this.email)
-          this.$router.push('/confirm')
+          this.$router.push('/vue/confirm')
         })
         .catch(err => this.errors = err)
     }

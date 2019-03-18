@@ -22,7 +22,7 @@
           <input type="button" class="button is-link" value="SignIn" @click="signIn" />
           <ul>
             <li>
-              <nuxt-link to="/">Top</nuxt-link>
+              <nuxt-link to="/vue/">Top</nuxt-link>
             </li>
           </ul>
         </div>
@@ -44,7 +44,7 @@ export default {
   methods: {
     signIn () {
       Auth.signIn(this.email, this.password)
-        .then(data => this.$router.push('/secret'))
+        .then(data => this.$router.push('/vue/secret'))
         .catch(err => this.errors = err)
     },
   }

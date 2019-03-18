@@ -6,16 +6,16 @@
           <h2>INDEX</h2>
           <ul>
             <li>
-              <nuxt-link to="/secret">Secret</nuxt-link>
+              <nuxt-link to="/vue/secret">Secret</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/signin">SignIn</nuxt-link>
+              <nuxt-link to="/vue/signin">SignIn</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/signup">SignUp</nuxt-link>
+              <nuxt-link to="/vue/signup">SignUp</nuxt-link>
             </li>
             <li>
-              <nuxt-link to="/confirm">SignUpConfirm</nuxt-link>
+              <nuxt-link to="/vue/confirm">SignUpConfirm</nuxt-link>
             </li>
           </ul>
         </div>

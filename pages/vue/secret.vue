@@ -12,7 +12,7 @@
           <input type="button" class="button is-warning" value="SignOut" @click="signOut" />
           <ul>
             <li>
-              <nuxt-link to="/">Top</nuxt-link>
+              <nuxt-link to="/vue/">Top</nuxt-link>
             </li>
           </ul>
         </div>
@@ -33,7 +33,7 @@ export default {
   methods: {
     signOut () {
       Auth.signOut()
-        .then(data => this.$router.push('/'))
+        .then(data => this.$router.push('/vue/'))
         .catch(err => this.errors = err)
     }
   }

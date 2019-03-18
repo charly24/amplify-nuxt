@@ -22,7 +22,7 @@
           <input type="button" class="button is-success" value="Confirm" @click="signUpConfirm" />
           <ul>
             <li>
-              <nuxt-link to="/">Top</nuxt-link>
+              <nuxt-link to="/vue/">Top</nuxt-link>
             </li>
           </ul>
         </div>
@@ -46,7 +46,7 @@ export default {
       Auth.confirmSignUp(this.email, this.code)
         .then(data => {
           this.$store.dispatch('amplify/clearUsername')
-          this.$router.push('/signin')
+          this.$router.push('/vue/signin')
         })
         .catch(err => this.errors = err)
     }
