@@ -1,9 +1,9 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
       <no-ssr>
         <amplify-authenticator :auth-config="authConfig"/>
+        <button @click="loginWithGoogle">Google</button>
         <amplify-sign-out/>
       </no-ssr>
     </div>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  import { Auth } from 'aws-amplify'
   export default {
     components: {},
     data() {
@@ -36,6 +37,32 @@
           // MFA
           confirmSignInConfig: {}
         }
+      }
+    },
+    mounted() {
+      Auth.currentAuthenticatedUser()
+        .then(user => {
+          console.log(user.username)
+          console.log(user.signInUserSession.accessToken.payload.sub)
+          console.log(user.signInUserSession.accessToken)
+          console.log(user)
+        })
+        .catch(err => console.log(err))
+    },
+    methods: {
+      loginWithGoogle: () => {
+        const config = Auth.configure()
+        const clientId = config.userPoolWebClientId
+        const {
+          domain,
+          redirectSignIn,
+          redirectSignOut,
+          responseType
+        } = config.oauth
+        const url_to_google = 'https://' + domain + '/oauth2/authorize?redirect_uri=' + redirectSignIn + '&response_type=' + responseType + '&client_id=' + clientId + '&identity_provider=Google';
+        window.console.log(url_to_google)
+
+        window.location.assign(url_to_google);
       }
     }
   }
