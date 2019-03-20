@@ -20,7 +20,8 @@ module.exports = {
     '@nuxtjs/dotenv',
   ],
   plugins: [
-    { src: '~plugins/amplify-init.js' }
+    { src: '~plugins/amplify.js', ssr: false }
+    // { src: '~plugins/amplify-init.js', ssr: false }
   ],
   /*
   ** Customize the progress bar color

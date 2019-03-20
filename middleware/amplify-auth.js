@@ -5,5 +5,5 @@ export default async ({ redirect }) => {
   await Auth.currentUserInfo()
     .then(data => signed_in = Boolean(data))
     .catch(err => console.log(err))
-    .then(() => signed_in || redirect('/signin'))
+    .then(() => signed_in || redirect('/vue/signin'))
 }
