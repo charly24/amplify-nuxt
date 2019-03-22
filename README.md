@@ -24,3 +24,10 @@ $ yarn
 # serve with hot reload at localhost:3001
 $ yarn run dev --port=3001
 ```
+
+## SAML連携の設定作り方
+https://aws.amazon.com/jp/premiumsupport/knowledge-center/cognito-saml-onelogin/
+こちらがCognitoとOneLoginをIdPとした際の連携資料としてよくできており、
+https://forums.aws.amazon.com/message.jspa?messageID=888487#888487
+こちら記載のようにSAML Test Connector（Advance）にしてLogin URL設定してSAML Initiatorを”Service Provider”にしたら動作した。
+※RelayState関連でやたらはまったが、空で動作します
