@@ -4,6 +4,7 @@
       <no-ssr>
         <amplify-authenticator :auth-config="authConfig"/>
         <button @click="loginWithGoogle">Google</button>
+        <button @click="loginWithSAML">SAML</button>
         <amplify-sign-out/>
       </no-ssr>
     </div>
@@ -12,6 +13,18 @@
 
 <script>
   import { Auth } from 'aws-amplify'
+  const getLoginUrl = (provider) => {
+    const config = Auth.configure()
+    const clientId = config.userPoolWebClientId
+    const {
+      domain,
+      redirectSignIn,
+      redirectSignOut,
+      responseType
+    } = config.oauth
+    return 'https://' + domain + '/oauth2/authorize?redirect_uri=' + redirectSignIn + '&response_type=' + responseType + '&client_id=' + clientId + '&identity_provider=' + provider;
+  }
+
   export default {
     components: {},
     data() {
@@ -51,18 +64,10 @@
     },
     methods: {
       loginWithGoogle: () => {
-        const config = Auth.configure()
-        const clientId = config.userPoolWebClientId
-        const {
-          domain,
-          redirectSignIn,
-          redirectSignOut,
-          responseType
-        } = config.oauth
-        const url_to_google = 'https://' + domain + '/oauth2/authorize?redirect_uri=' + redirectSignIn + '&response_type=' + responseType + '&client_id=' + clientId + '&identity_provider=Google';
-        window.console.log(url_to_google)
-
-        window.location.assign(url_to_google);
+        window.location.assign(getLoginUrl('google'));
+      },
+      loginWithSAML: () => {
+        window.location.assign(getLoginUrl('onelogin'));
       }
     }
   }
