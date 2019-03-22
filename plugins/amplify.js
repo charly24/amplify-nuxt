@@ -9,11 +9,11 @@ Amplify.configure({
     userPoolWebClientId: process.env.AWS_AMPLIFY_AUTH_USER_POOL_WEB_CLIENT_ID,
     // identityPoolId: process.env.AWS_AMPLIFY_AUTH_IDENTITY_POOL_ID,
     oauth: {
-      domain: 'grow-sample.auth.ap-northeast-1.amazoncognito.com',
-      scope : ['email', 'profile', 'openid','aws.cognito.signin.user.admin'],
-      redirectSignIn: 'http://localhost:3001',
-      redirectSignOut: 'http://localhost:3001',
-      responseType: 'code'
+      domain: process.env.AWS_COGNITO_DOMAIN,
+      scope : process.env.AWS_COGNITO_OAUTH_SCOPE.split('|'),
+      redirectSignIn: process.env.AWS_COGNITO_REDIRECT_SIGN_IN,
+      redirectSignOut: process.env.AWS_COGNITO_REDIRECT_SIGN_OUT,
+      responseType: process.env.AWS_COGNITO_RESPONSE_TYPE
     }
   }
 })
